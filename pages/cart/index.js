@@ -1,5 +1,6 @@
 import { useState } from "react";
 import fetchUtils from "../../utils/fetchUtils";
+import provider from '../../data/provider'
 import Button from "../../components/button";
 import CartItem from '../../components/cart-item'
 
@@ -45,5 +46,5 @@ export default function Cart({ cart, refreshCartCount }) {
 }
 
 export async function getServerSideProps(_) {
-  return { props: await fetchUtils.get("cart") };
+  return { props: { cart: provider.itemsInCart } };
 }
